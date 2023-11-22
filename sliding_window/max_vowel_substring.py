@@ -16,7 +16,7 @@ class Solution:
         #build window of size k and count number of vowels in it
         count = 0
         for i in range(k):
-            # print(s[i])
+            print(s[i])
             count += int(s[i] in vowels)
         
         answer = count

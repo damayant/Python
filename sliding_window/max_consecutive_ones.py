@@ -22,4 +22,4 @@ class Solution:
 
         
     
-    longestOnes(nums=[0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1],k=2)
+    longestOnes(nums=[1,1,1,0,0,0,1,1,1,1,0],k=2)
