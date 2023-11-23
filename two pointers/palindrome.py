@@ -8,5 +8,19 @@ class Solution:
 
         return filtered_char_list == reversed_filtered_char_list
     
+    def twoPointer(s:str)->bool:
+        i = 0 
+        j = len(s)-1
 
-    print(isPalindrome(s="A man, a plan, a canal: Panama"))
+        while i<j :
+            while i<j and not s[i].isalnum():
+                i+=1
+            while i<j and not s[j].isalnum():
+                j-=1
+            
+            if s[i].lower()!= s[j].lower():
+                return False
+        return True
+    
+
+    print(twoPointer(s="A man, a plan, a canal: Panama"))

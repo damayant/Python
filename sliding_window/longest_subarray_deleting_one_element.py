@@ -22,5 +22,5 @@ class Solution:
             return max_count - 1
         else:
             return max_count
-
+    
     print(longestSubarray(nums=[0,1,1,1,0,1,1,0,1]))
