@@ -63,7 +63,9 @@ Return the result table in any order.
 import pandas as pd
 
 def combine_two_tables(person:pd.DataFrame,address:pd.DataFrame)->pd.DataFrame:
-    # how='left' specifies that we are performing a left join, meaning all the records from the person dataframe (the left dataframe) will be retained, and the matching records from the address dataframe (the right dataframe) will be merged where the 'personId' values match. If a 'personId' from the person dataframe does not have a matching 'personId' in the address dataframe, the 'city' and 'state' columns for that record will contain NaN values (representing missing data).
+    # how='left' specifies that we are performing a left join, meaning all the records from the person dataframe (the left dataframe) will be retained, 
+    # and the matching records from the address dataframe (the right dataframe) will be merged where the 'personId' values match. 
+    # If a 'personId' from the person dataframe does not have a matching 'personId' in the address dataframe, the 'city' and 'state' columns for that record will contain NaN values (representing missing data).
     result = pd.merge(person,address,on='personId',how='left')
     result = result[['firstName','lastName','city','state']]
     return result
