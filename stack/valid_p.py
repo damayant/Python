@@ -31,4 +31,4 @@ class Solution (object):
             #if the stack is empty at the end , then we have a valid expression . 
         return not stack
 
-    isValid("()((()))")
+    isValid("()((())))")

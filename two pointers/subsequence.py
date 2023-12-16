@@ -12,7 +12,7 @@ class Solution:
         return p_left == left_bound
 
 
-    print(isSubsequence(s="ab",t="baab"))
+    print(isSubsequence(s="ab",t="baabb"))
 
 
 
