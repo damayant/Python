@@ -16,11 +16,12 @@ class Solution:
             dummy =  dummy.next
         count -= 1
 
-        temp_prev =  ListNode(0)
+        
         result =  ListNode(0)
 
         result.next = head
         dummy = result.next
+        temp_prev =  ListNode(0)
 
         #get the last node of the LL which will now point to null
         for i in range(count-k+1):
@@ -44,6 +45,45 @@ class Solution:
 
         return new_head
 
+    def withOneIteration(head:Optional[ListNode], k: int):
+            dummy = ListNode(0)
+            dummy.next  = head
+
+            first_ptr = dummy
+            second_ptr = dummy
+
+            for i in range(k):
+                second_ptr =  second_ptr.next
+
+            while second_ptr.next is not None:
+                first_ptr =  first_ptr.next
+                second_ptr =  second_ptr.next
+            
+            new_head = first_ptr.next
+            first_ptr.next = None
+
+            dummy_new_head =  new_head
+
+            while dummy_new_head.next is not None:
+                dummy_new_head =  dummy_new_head.next
+
+            dummy_new_head.next  = dummy.next
+
+            return new_head
+
+            # while(new_head is not None):
+            #     print(new_head.val)
+            #     new_head =  new_head.next  
+
+
+
+
+
+
+
+
+
+
     head = ListNode(1)
     head.next = ListNode(2)
     head.next.next =  ListNode(3)
@@ -52,4 +92,8 @@ class Solution:
     head.next.next.next.next.next = None
 
 
-    rotateRight(head,k=2)
+    
+
+
+
+    withOneIteration(head,k=2)
