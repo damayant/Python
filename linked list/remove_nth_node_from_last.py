@@ -29,6 +29,24 @@ class Solution:
         temp_prev.next =  temp_prev.next.next
 
         return result.next
+
+    def withOneIteration(head:Optional[ListNode],n:int)->Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+
+        first_ptr = dummy
+        second_ptr = dummy
+
+        for i in range(n):
+            second_ptr =  second_ptr.next
+
+        while second_ptr.next is not None:
+            first_ptr =  first_ptr.next
+            second_ptr = second_ptr.next
+        
+        first_ptr.next = first_ptr.next.next
+
+        return dummy.next
         
 
 
@@ -51,7 +69,7 @@ class Solution:
     head.next.next.next.next =  ListNode(5)
     head.next.next.next.next.next = None
 
-    removeNthFromEnd(head , n = 2)
+    withOneIteration(head , n = 2)
 
 
 
