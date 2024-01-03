@@ -32,12 +32,10 @@ class Solution:
 
     def withOneIteration(head:Optional[ListNode],n:int)->Optional[ListNode]:
         #initialise the dummy node 
-        dummy = ListNode(0)
-        dummy.next = head
+        dummy = ListNode(0,head)
 
-        #initialise the ptrs to point to dummy node
-        first_ptr = dummy
-        second_ptr = dummy
+        #initialise the ptrs to point to dummy node and NOT TO dummy.next because otherwise will encounter NoneType error
+        first_ptr , second_ptr = dummy , dummy
 
         #shift the secnd_ptr to start n steps ahead of first ptr
         for i in range(n):
