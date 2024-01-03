@@ -22,3 +22,4 @@ class Solution :
 
 
 #Time complexity : 
+#O(nlogn) -> logn - for sorting , n for iterating intervals

@@ -27,8 +27,18 @@ class Solution:
             previous = current
             current = temp_next
         #update pointers
-        left_prev.next.next = current #current is node after 'right'
+        # left_prev.next.next = current #current is node after 'right' 
+
+        #Revision -> the above was throwing NoneType error
+
         left_prev.next = previous #prev is right
+        new_dummy = dummy
+        while new_dummy.next is not None:
+            new_dummy = new_dummy.next
+        
+        #join the right sub-arry  now to the reult
+        new_dummy.next = current
+
 
         print_dummy =  dummy
         while(print_dummy!= None):
