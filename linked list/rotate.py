@@ -51,9 +51,17 @@ class Solution:
 
             first_ptr = dummy
             second_ptr = dummy
-
+            left_prev = None
             for i in range(k):
-                second_ptr =  second_ptr.next
+                if second_ptr.next is not None :
+                    left_prev = second_ptr
+                    second_ptr =  second_ptr.next
+                else :
+                    new_head = second_ptr
+                    left_prev.next = None
+                    new_head.next = dummy.next
+                    return new_head
+                    
 
             while second_ptr.next is not None:
                 first_ptr =  first_ptr.next
@@ -69,7 +77,13 @@ class Solution:
 
             dummy_new_head.next  = dummy.next
 
-            return new_head
+            result_head =  new_head
+
+            while new_head is not None:
+                print(new_head.val)
+                new_head = new_head.next
+
+            return result_head
 
             # while(new_head is not None):
             #     print(new_head.val)
@@ -84,16 +98,20 @@ class Solution:
 
 
 
-    head = ListNode(1)
-    head.next = ListNode(2)
-    head.next.next =  ListNode(3)
-    head.next.next.next =  ListNode(4)
-    head.next.next.next.next =  ListNode(5)
-    head.next.next.next.next.next = None
+    # head = ListNode(1)
+    # head.next = ListNode(2)
+    # head.next.next =  ListNode(3)
+    # head.next.next.next =  ListNode(4)
+    # head.next.next.next.next =  ListNode(5)
+    # head.next.next.next.next.next = None
+
+    head = ListNode(0)
+    head.next =  ListNode(1)
+    head.next.next =  ListNode(2)
 
 
     
 
 
 
-    withOneIteration(head,k=2)
+    withOneIteration(head,k=4)
