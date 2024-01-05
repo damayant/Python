@@ -7,51 +7,38 @@ class ListNode:
 
 class Solution: 
     def rotateRight(head:Optional[ListNode], k: int):
-        dummy = head
-        count = 0
-
-        #count the size of the LL
-        while(dummy is not None):
-            count += 1
-            dummy =  dummy.next
-        count -= 1
-
+        #base cases 
+        if not head :
+            return None
+        if not head.next :
+            return head
         
-        result =  ListNode(0)
+        #close the linked-list into a ring
+        old_tail = head
+        n = 1
+        while old_tail.next :
+            old_tail =   old_tail.next
+            n+= 1
+        old_tail.next =  head
 
-        result.next = head
-        dummy = result.next
-        temp_prev =  ListNode(0)
+        #find new tail : (n-k%n-1)th node
+        #add new  head : (n-k%n)th node
+        new_tail =  head
+        for i in range(n-k%n-1):
+            new_tail = new_tail.next
+        new_head = new_tail.next
 
-        #get the last node of the LL which will now point to null
-        for i in range(count-k+1):
-            temp_prev = dummy
-            dummy =  dummy.next
-
-        #point the new last node to  None
-        temp_prev.next = None
-        #copy the address of the new head
-        new_head =  dummy
-        #find the last node of the new rotated subarray which should point to the original head
-        while(dummy.next is not  None):
-            dummy = dummy.next
-        
-        #point the last node of the rotated LL to the original head
-        dummy.next =  result.next
-
-        while(new_head is not None):
-            print(new_head.val)
-            new_head =  new_head.next
+        #break the ring
+        new_tail.next = None
 
         return new_head
 
     def withOneIteration(head:Optional[ListNode], k: int):
-            dummy = ListNode(0)
-            dummy.next  = head
+            dummy = ListNode(0,head)
 
-            first_ptr = dummy
-            second_ptr = dummy
+            first_ptr , second_ptr = dummy , dummy
             left_prev = None
+
             for i in range(k):
                 if second_ptr.next is not None :
                     left_prev = second_ptr
@@ -114,4 +101,4 @@ class Solution:
 
 
 
-    withOneIteration(head,k=4)
+    rotateRight(head,k=4)
