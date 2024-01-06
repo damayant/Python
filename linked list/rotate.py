@@ -6,6 +6,7 @@ class ListNode:
         self.next =  next
 
 class Solution: 
+    #this solution passes all test cases with O(N) time complexity and O(1) space complexity
     def rotateRight(head:Optional[ListNode], k: int):
         #base cases 
         if not head :
@@ -33,6 +34,7 @@ class Solution:
 
         return new_head
 
+    #this solution DOES NOT pass all test cases
     def withOneIteration(head:Optional[ListNode], k: int):
             dummy = ListNode(0,head)
 

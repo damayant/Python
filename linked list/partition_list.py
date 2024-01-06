@@ -8,7 +8,7 @@ class ListNode:
 class Solution : 
     def partition(head:Optional[ListNode], x:int)->Optional[ListNode]:
         # before and after are the two pointers used to create two list
-        #before and after_heads are used too save heads of the two lists 
+        # before_head and after_head are used to save heads of the two lists 
         before = before_head = ListNode(0)
         after =  after_head = ListNode(0) 
 
