@@ -34,10 +34,8 @@ def reverseKGroup (head : ListNode, k : int) -> ListNode :
     # Keep going until there are nodes in the list
     while ptr:
         count = 0
-            
         # Start counting nodes from the head
         ptr = head
-            
         # Find the head of the next k nodes
         while count < k and ptr:
             ptr = ptr.next
