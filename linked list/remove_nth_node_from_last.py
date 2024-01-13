@@ -11,20 +11,18 @@ class Solution:
         while(dummy!=None):
             count += 1
             dummy =  dummy.next
-        count -=  1
+        
+        
+        dummy = head
+        prev = None
 
-        temp_prev = ListNode(0)
-        result = ListNode(0)
-        result.next = head
-        dummy = result.next
-
-        for i in range(count-n+1):
-            temp_prev = dummy
+        for i in range(count-n):
+            prev = dummy
             dummy = dummy.next
 
-        temp_prev.next =  temp_prev.next.next
+        prev.next =  dummy.next
 
-        return result.next
+        return head
 
     def withOneIteration(head:Optional[ListNode],n:int)->Optional[ListNode]:
         #initialise the dummy node 
@@ -69,7 +67,7 @@ class Solution:
     head.next.next.next.next =  ListNode(5)
     head.next.next.next.next.next = None
 
-    withOneIteration(head , n = 2)
+    removeNthFromEnd(head , n = 2)
 
 
 

@@ -7,6 +7,33 @@ class ListNode:
         self.next =  next
 
 class Solution :
+    def deleteDuplicatesUsingHashMap(head:Optional[ListNode])->Optional[ListNode]:
+        set = {}
+        new_head = ListNode(0)
+        dummy = new_head
+        current = head
+        
+        while current :
+            if current.val in set :
+                set[current.val] += 1
+            else :
+                set[current.val] = 1
+            current =  current.next
+
+        current = head
+        while current:
+            prev= current
+            if set[current.val] >1 :
+                for i in range(set[current.val]):
+                    current = current.next
+            else :
+                dummy.next = prev
+                current = current.next
+                dummy = dummy.next 
+            
+        dummy.next = None
+        return new_head.next
+
     def deleteDuplicates(head:Optional[ListNode])->Optional[ListNode]:
         #sentinel
         sentinel = ListNode(0,head)

@@ -10,19 +10,22 @@ class Solution :
     def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         if l1 is None and l2 : return l2
         if l1 and l2 is None: return l1
+
+        new_head = ListNode(0)
+        carry , sum = 0 , 0
+
         if l1.next is None and l2.next is None : 
             sum = l1.val + l2.val
             if sum <10 :
-                return ListNode(sum)
+                new_head = ListNode(sum)
             else:
                 carry = sum //10
                 rem = sum%10
                 new_head = ListNode(rem)
                 new_head.next = ListNode(carry)
+            return new_head
 
-        new_head = ListNode(0)
         dummy_head = new_head
-        carry , sum = 0 , 0
 
         while l1 or l2 :
             if l1 is not None and l2 is not None :
