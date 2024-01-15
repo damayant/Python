@@ -29,7 +29,7 @@ def reverseLinkedList(head, k):
 def reverseKGroup (head : ListNode, k : int) -> ListNode :
     ptr = head
     ktail  = None
-    # Head of the final, moified linked list
+    # Head of the final, modified linked list
     new_head  = None
     # Keep going until there are nodes in the list
     while ptr:

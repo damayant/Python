@@ -6,15 +6,18 @@ class ListNode:
         self.next =  next
 class Solution:
     def removeNthFromEnd(head:Optional[ListNode],n:int)->Optional[ListNode]:
+        if not head or head.next is None:
+            return 
         dummy = head 
         count = 0
         while(dummy!=None):
             count += 1
             dummy =  dummy.next
-        
+        if count == n :
+            return head.next
         
         dummy = head
-        prev = None
+        prev = dummy
 
         for i in range(count-n):
             prev = dummy

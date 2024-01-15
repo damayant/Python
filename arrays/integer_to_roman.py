@@ -18,7 +18,8 @@ class Solution:
 
 
     '''
-    In Python, the `divmod()` function takes two numbers and returns a pair of numbers (a tuple) consisting of their quotient and remainder when divided. The syntax is `divmod(x, y)`, where `x` is the numerator and `y` is the denominator.
+    In Python, the `divmod()` function takes two numbers and returns a pair of numbers (a tuple) consisting of their quotient and remainder when divided. 
+    The syntax is `divmod(x, y)`, where `x` is the numerator and `y` is the denominator.
 
 Here's an example:
 
