@@ -71,3 +71,27 @@ Now, let's discuss when to use and when not to use the Factory Method Pattern, a
 - Failing to properly encapsulate object creation logic, leading to tight coupling between the client code and concrete classes.
 
 Overall, the Factory Method Pattern is a powerful tool for creating objects in a flexible and decoupled manner, but it should be used judiciously and appropriately in situations where it provides clear benefits in terms of flexibility, extensibility, and maintainability.
+
+The Factory Pattern and the Singleton Pattern are both design patterns used in software engineering, but they serve different purposes and address different concerns:
+
+1. **Factory Pattern**:
+   - **Purpose**: The Factory Pattern is a creational design pattern that provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created.
+   - **Usage**: It is used when you have a superclass with multiple subclasses, and the specific subclass to be instantiated is determined at runtime.
+   - **Implementation**: The Factory Pattern typically involves an abstract creator class with a factory method for creating objects and concrete subclasses that implement the factory method to create specific types of objects.
+
+2. **Singleton Pattern**:
+   - **Purpose**: The Singleton Pattern is a creational design pattern that ensures a class has only one instance and provides a global point of access to that instance.
+   - **Usage**: It is used when you need to ensure that a class has only one instance throughout the lifetime of the application, such as logging, configuration settings, or database connections.
+   - **Implementation**: The Singleton Pattern typically involves a class with a private constructor to prevent direct instantiation, a static method to provide access to the single instance, and a static field to hold that instance. The instance is usually created lazily or eagerly depending on the requirements.
+
+**Key Differences**:
+
+- **Purpose**: The Factory Pattern is used for creating objects, while the Singleton Pattern is used for ensuring a single instance of a class.
+  
+- **Number of Instances**: The Factory Pattern can create multiple instances of different types, while the Singleton Pattern ensures there is only one instance of a class.
+
+- **Access Control**: In the Factory Pattern, access to the factory method is typically not restricted, and multiple instances can be created. In contrast, the Singleton Pattern restricts instantiation to only one instance and provides a global point of access to it.
+
+- **Scope**: The Factory Pattern is more concerned with managing object creation and instantiation, whereas the Singleton Pattern is focused on managing the lifecycle and access of a single instance of a class.
+
+In summary, the Factory Pattern is used for creating objects with a specific interface, allowing for flexibility and decoupling, while the Singleton Pattern is used for ensuring there's only one instance of a class, providing global access to that instance throughout the application.
