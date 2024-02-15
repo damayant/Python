@@ -1,7 +1,7 @@
 class Product : 
 
     def __init__(self):
-        self.__maxprice = 900
+        self.__maxprice = 900 #__makes it a private variable
         self.minprice = 500
 
     def sell(self):
