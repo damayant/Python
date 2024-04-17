@@ -44,6 +44,6 @@ class Solution :
                 
         return j
     
-    print(removeDuplicatesWithoutHashmap(nums = [1,1,1,2,2,3]))
+    print(removeDuplicatesWithoutHashmap(nums = [1,1,2,2,3,3,3]))
                 
 
