@@ -13,6 +13,7 @@ class Solution:
         j = len(s)-1
 
         while i<j :
+            print(s[i])
             while i<j and not s[i].isalnum():
                 i+=1
             while i<j and not s[j].isalnum():
