@@ -27,7 +27,7 @@ class Solution:
                 stack.append(node.right)
         
         #ancestors set for node p
-        ancestors  =  set()
+        ancestors  =  set() #remember to have it a set next time revise not an array
 
         #process all ancestors for node p using parent pointers 
         while p : 
@@ -48,9 +48,10 @@ class Solution:
     root.right =  TreeNode(1)
     root.left.left = TreeNode(6) 
     root.left.right =  TreeNode(2)
+    q = root.left.right
     root.left.right.left = TreeNode(7)
     root.left.right.right = TreeNode(4)
-    q = root.right
+    # q = root.right
     root.right.left =  TreeNode(0)
     root.right.right =  TreeNode(8)
 

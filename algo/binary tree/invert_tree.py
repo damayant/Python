@@ -13,11 +13,11 @@ class Solution:
         if root is None:
             return None
         
-        tree_node_q = deque()
+        tree_node_q = deque()   #double-ended queue." It's a data structure in Python that allows fast insertion and deletion from both ends
         tree_node_q.append(root)
 
         while(len(tree_node_q) > 0):
-            popped_tree_node = tree_node_q.popleft()
+            popped_tree_node = tree_node_q.popleft() #removes and returns the element from the left side (the beginning) of the deque
 
             #swap nodes
             temp  =  popped_tree_node.left
