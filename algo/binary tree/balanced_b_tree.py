@@ -15,15 +15,15 @@ class Solution:
         max_height = max(self.height(root.left),self.height(root.left))
         return 1+ max_height
     
-    # def isBalanced(root:TreeNode)->bool:
-    #     # An empty tree satisfies the definition of a balanced tree
-    #     if root is None:
-    #         return True
-    #     # Check if subtrees have height within 1. If they do, check if the
-    #     # subtrees are balanced
-    #     return ( abs(height(root.left)-height(root.right))>2  # type: ignore
-    #             and isBalanced(root.right) # type: ignore
-    #             and isBalanced(root.left)) # type: ignore
+    def isBalanced(root:TreeNode)->bool:
+        # An empty tree satisfies the definition of a balanced tree
+        if root is None:
+            return True
+        # Check if subtrees have height within 1. If they do, check if the
+        # subtrees are balanced
+        return ( abs(height(root.left)-height(root.right))>2  # type: ignore
+                and isBalanced(root.right) # type: ignore
+                and isBalanced(root.left)) # type: ignore
     
     root = TreeNode(3)
     root.left = TreeNode(9)
