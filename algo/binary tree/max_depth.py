@@ -37,6 +37,12 @@ class Solution:
             number_level+= 1
 
         return number_level
+    
+    def recursiveSolution(self,root):
+        if not  root:
+            return 0
+        return 1+max(self.recursiveSolution(root.left),self.recursiveSolution(root.right))
+
 
     root = None
     root = TreeNode(0)
@@ -49,5 +55,5 @@ class Solution:
     root.right.right.left =  TreeNode(3)
     root.right.right.right =  TreeNode(1)
 
-    print(maxDepth(root))
+    print(recursiveSolution(recursiveSolution,root))
             
