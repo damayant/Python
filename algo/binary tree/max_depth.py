@@ -55,5 +55,7 @@ class Solution:
     root.right.right.left =  TreeNode(3)
     root.right.right.right =  TreeNode(1)
 
-    print(recursiveSolution(recursiveSolution,root))
+    print(recursiveSolution(self,root))
+
+    #https://www.youtube.com/watch?v=bkxqA8Rfv04&pp=ygUXZGlhbWV0ZXIgb2YgYmluYXJ5IHRyZWU%3D
             

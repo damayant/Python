@@ -1,15 +1,18 @@
+from typing import List
+
+
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return nums[0]
         freq_limit = len(nums)//2
-        map = {}
+        _map = {}
         for i in range(len(nums)):
-            if nums[i] not in map:
-                map[nums[i]] = 1
+            if nums[i] not in _map:
+                _map[nums[i]] = 1
             else:
-                map[nums[i]] += 1
-                if map[nums[i]] > freq_limit :
+                _map[nums[i]] += 1
+                if _map[nums[i]] > freq_limit :
                     return nums[i]
         return 0
     
