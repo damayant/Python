@@ -7,34 +7,27 @@ class Solution:
         N = 9
 
         #use hash-set to record the status
-        rows = [set() for _ in range(N)]
-        cols = [set() for _ in range(N)]
-        boxes = [set() for _ in range(N)]
+        cols = collections.defaultdict(set)
+        rows = collections.defaultdict(set)
+        squares = collections.defaultdict(set)
+
 
         for r in range(N):
             for c in range(N):
-                val = board[r][c]
                 #check if the position is filled with number
-                if val == ".":
+                if board[r][c] == ".":
                     continue
                     
-                #check the row
-                if val in rows[r]:
+                #check the row,col,square
+                if (board[r][c] in rows[r] or
+                    board[r][c] in cols[c] or
+                    board[r][c] in squares[(r//3,c//3)]):
                     return False
-                rows[r].add(val)
-
-                #check the column
-                if val in cols[c]:
-                    return False
-                cols[c].add(val)
-
-                #check the box
-                idx = (r//3)*3 + c//3
-                if val in boxes[idx]:
-                    return False
-                boxes[idx].add(val)
-            
+                rows[r].add(board[r][c])
+                cols[c].add(board[r][c])
+                squares[(r//3,c//3)].add(board[r][c])
         return True
+        
 
     
     print(isValidSudoku(board = 
