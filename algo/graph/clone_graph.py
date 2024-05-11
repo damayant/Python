@@ -9,7 +9,7 @@ class Solution :
 
         def dfs(node):
             if  node in  old_to_new :
-                return old_to_new[node]
+                return old_to_new
             
             if node is not None:
                 copy =  Node(node.val)
