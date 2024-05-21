@@ -11,13 +11,19 @@ class Solution :
            pre_map[course].append(prerqisite)
 
        def dfs(course):
+            #base case 1: if already exists in set then loop then the course cannot be completed
            if course in visit_set:
                return False
+            #base case 2: this means the prerequisits of this course are. checked and it can be completed
            if  pre_map[course] == []:
                return True
+         #the course is now added to visit set
            visit_set.add(course)
+        #start checking prereqs of the current course in DFS
            for prerqisite in pre_map[course]:
                if not dfs(prerqisite): return False
+        #after checking dfs of prereqs when all good remove the current course from visit set
+        #and also make the preMap of the course empty signifying that it can be completed 
            visit_set.remove(course)
            pre_map[course] = []
            return True
