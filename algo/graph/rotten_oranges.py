@@ -1,0 +1,33 @@
+from collections import deque
+from typing import Collection, List
+
+
+
+class Solution:
+    def orangesRotting(grid:List[List[int]])->int:
+        q = deque()
+        time , no_fresh_oranges = 0 , 0
+
+        total_rows , total_cols = len(grid), len(grid[0])
+
+        for r in range(total_rows):
+            for c in range(total_cols):
+                if grid[r][c] == 1:
+                    fresh += 1
+                if grid[r][c] == 2:
+                    q.append([r,c])
+        
+        directions = [(1,0),(-1,0),(0,1),(0,-1)]
+        while q and no_fresh_oranges > 0 :
+            for i  in  range(len(q)):
+                r,  c = q.popleft()
+                for  dr,dc in directions:
+                    row, col = dr+r, dc+c  
+                    if(row<0 or row == len(grid)) or (col<0  or col == len(grid[0])) or grid[row][col] !=1 :
+                        continue
+                    grid[row][col] = 2
+                    q.append([row,col])
+                    q.append([row,col])
+                    fresh -= 1
+            time+= 1
+        return time  if fresh == 0  or  -1
