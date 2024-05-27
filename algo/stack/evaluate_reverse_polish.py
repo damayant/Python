@@ -22,7 +22,7 @@ def evalRPN(tokens:List[str])->int:
 
     return stack.pop()
 
-def evalRPN(self, tokens: List[str]) -> int:
+def evalRPN(tokens: List[str]) -> int:
         stack = []
         for i in range(len(tokens)):
             if tokens[i] == "+":

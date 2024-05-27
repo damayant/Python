@@ -18,7 +18,7 @@ class Solution:
         element_q.append(root)
         number_level = 0
 
-        while True :
+        while len(element_q) >0 :
             node_count_at_level = len(element_q)
             if (node_count_at_level == 0) :
                 return number_level
@@ -55,7 +55,7 @@ class Solution:
     root.right.right.left =  TreeNode(3)
     root.right.right.right =  TreeNode(1)
 
-    print(recursiveSolution(self,root))
+    print(maxDepth(root))
 
     #https://www.youtube.com/watch?v=bkxqA8Rfv04&pp=ygUXZGlhbWV0ZXIgb2YgYmluYXJ5IHRyZWU%3D
             
