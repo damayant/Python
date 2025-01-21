@@ -20,3 +20,15 @@ class Solution:
             start += 1
 
     rotate(nums = [1,2,3,4,5,6,7], k = 3)
+
+    def rotate_solution_two(nums:List[int],k:int)->None:
+        def rev(left:int,right:int):
+            while left<right:
+                nums[left],nums[right]=nums[right],nums[left]
+                left+=1
+                right-=1
+        rev(0,len(nums)-1)
+        rev(0,k-1)
+        rev(k,len(nums)-1)
+        return nums
+    rotate_solution_two(nums = [1,2,3,4,5,6,7], k = 3)
