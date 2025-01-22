@@ -1,3 +1,4 @@
+import collections
 from typing import List
 
 
@@ -15,6 +16,10 @@ class Solution:
                 if _map[nums[i]] > freq_limit :
                     return nums[i]
         return 0
+    
+    def withCounter(self,nums:List[int])->int:
+        counts=collections.Counter(nums)
+        return max(counts.keys(),key=counts.get)
     
     def majorityElementWithNoExtraSpace(self, nums: List[int]) -> int:
         count ,current_major_element = 1 ,nums[0]  

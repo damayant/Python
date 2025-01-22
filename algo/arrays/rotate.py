@@ -21,13 +21,13 @@ class Solution:
 
     rotate(nums = [1,2,3,4,5,6,7], k = 3)
 
-    def rotate_solution_two(nums:List[int],k:int)->None:
+    def rotate_solution_two(nums:List[int],k:int):
         def rev(left:int,right:int):
             while left<right:
                 nums[left],nums[right]=nums[right],nums[left]
                 left+=1
                 right-=1
-        rev(0,len(nums)-1)
+        rev(0,len(nums)-1) #reverts the entire array
         rev(0,k-1)
         rev(k,len(nums)-1)
         return nums
