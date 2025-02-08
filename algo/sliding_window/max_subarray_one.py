@@ -13,7 +13,7 @@ from typing import List
 
 class Solution:
     def findMaxAverage(nums:List[int],k:int)->float :
-
+        
         if(len(nums)) == 1 :
             return float(nums[0])
 

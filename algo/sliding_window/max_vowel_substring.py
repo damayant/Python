@@ -22,8 +22,9 @@ class Solution:
         
         answer = count
 
-        #slide the window to right , foucs on the added character and the removed character and update count
-        #record largest count
+        #slide the window to right , 
+        #focus on the added character and the removed character and 
+        #update count record largest count
         for i in range(k,len(s)):
             print(s[i])
             count += int(s[i] in vowels)

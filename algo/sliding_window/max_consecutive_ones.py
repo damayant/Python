@@ -5,7 +5,7 @@ class Solution:
     def longestOnes(nums:List[int],k:int)->int:
         left = right = 0
         for right in range(len(nums)):
-            print(right)
+            # print(right)
             #if we encounter 0 then decrement k
             if(nums[right]==0):
                 k -= 1

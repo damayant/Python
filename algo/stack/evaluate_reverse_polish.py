@@ -1,7 +1,7 @@
 from typing import List
 
 
-def evalRPN(tokens:List[str])->int:
+def evalRPNSolutionOne(tokens:List[str])->int:
     operations = {
         "+": lambda a,b : a+b,
         "-": lambda a,b : a-b,
@@ -40,4 +40,4 @@ def evalRPN(tokens: List[str]) -> int:
         return stack[0]
 
 
-print(evalRPN(tokens = ["2","1","+","3","*"]))
+print(evalRPN(tokens = ["4","13","5","/","+"]))
