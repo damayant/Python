@@ -14,10 +14,12 @@ class Solution:
             if haystack[i]==needle[0]:
                 result=i
                 j=0 
-                while j<len(needle):
+                while j<len(needle) and j+i<len(haystack):
                     if haystack[j+i]==needle[j]:
                         j+=1
+                    else:
+                        break
                 if j==len(needle):
                     return result
         return -1 
-    print(twoPointer(None,haystack = "sadbutsad", needle = "sad"))
+    print(twoPointer(None,haystack = "mississippi", needle = "issipi"))
