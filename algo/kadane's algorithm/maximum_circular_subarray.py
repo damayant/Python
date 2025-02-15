@@ -18,4 +18,5 @@ class Solution:
             total += num
 
         return max(global_max, total - global_min) if global_max > 0 else global_max
-    print(maxSubarraySumCircular(None, [-3,-2,-3]))
+    # print(maxSubarraySumCircular(None, [-3,-2,-3]))
+    maxSubarraySumCircular(None, [5,-3,5])
