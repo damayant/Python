@@ -1,4 +1,4 @@
-#BFS Solution
+#BFS Solution :https://www.youtube.com/watch?v=pV2kpPD66nE
 
 from typing import Collection, List
 from collections import deque
@@ -22,7 +22,10 @@ class Solution:
                 
                 for dr,dc in direction:
                      r,c=row+dr,col+dc
-                     if (r in range(rows) and c in range(cols) and (r,c) not in visit and grid[r][c]=="1"):
+                     if (r in range(rows) 
+                         and c in range(cols) 
+                         and (r,c) not in visit 
+                         and grid[r][c]=="1"):
                          q.append((r,c))
                          visit.add((r,c))
                      
