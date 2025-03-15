@@ -13,7 +13,7 @@ class Solution:
             if prices[i] > prices[i+1]:
                 #checking if next day price is lower than the low
                 if prices[i+1] < low :
-                    #if next day price is lower than next day price 
+                    #if next day price is lower than low
                     #then low = next day price
                     low = prices[i+1] 
                     #after the new low price , the current high price 

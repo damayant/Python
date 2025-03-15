@@ -26,4 +26,6 @@ class Solution:
         print(final_str)
         return final_str
 
-    simplifyPath(path="/a/b///c/.././d/../f/")
+    # simplifyPath(path="/a/b///c/.././d/../f/")
+    simplifyPath(path="/home/user/Documents/../Pictures")
+    
