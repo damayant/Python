@@ -42,7 +42,7 @@ print(solution.findOrder(5, [[0,1],[0,2],[1,3],[1,4],[3,4]]))
 
 
 
-class Solution :
+# class Solution :
     def findOrder(numCourses:int,prerequisites:List[List[int]])->List[int]:
         #map each course to a pre-requisite list
         pre_map = {i : [] for i in range(numCourses)}
@@ -84,5 +84,4 @@ class Solution :
         
 
     findOrder(numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]])
-
 

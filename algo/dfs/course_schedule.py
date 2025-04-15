@@ -13,7 +13,7 @@ class Solution :
             #base case 1: if already exists in set then loop then the course cannot be completed
            if course in visit_set:
                return False
-            #base case 2: this means the prerequisits of this course are. checked and it can be completed
+            #base case 2: this means the prerequisits of this course are checked and it can be completed
            if  pre_map[course] == []:
                return True
          #the course is now added to visit set

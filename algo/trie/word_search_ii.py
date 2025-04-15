@@ -61,3 +61,14 @@ class Solution:
                 dfs(r, c, root)
         
         return result  # Return the list of found words
+
+
+# Example usage:
+if __name__ == "__main__":
+    board = [
+        ['a', 'b'],
+        ['c', 'd']
+    ]
+    words = ["abd"]
+    solution = Solution()
+    print(solution.findWords(board, words))  # Output: ["eat", "oath"]
