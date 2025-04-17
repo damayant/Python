@@ -53,3 +53,6 @@ In summary, use lists when you need a mutable collection that can be modified, a
 
 ### Slicing : https://www.geeksforgeeks.org/string-slicing-in-python/?ref=lbp
 
+
+
+modular and variable names should be named as per thinking
