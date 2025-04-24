@@ -1,3 +1,6 @@
+
+#max depth : Longest path from root to any leaf node (count of nodes or edges)
+
 from collections import deque
 
 
@@ -8,35 +11,48 @@ class TreeNode:
         self.right =  None
 
 
+from collections import deque
+
 class Solution:
-    def maxDepth(root):
+    def maxDepth(self, root) -> int:
+        # Entry point: computes the maximum depth of a binary tree
         if root is None:
             return 0
-        if root.left is None and root.right is None:
+        if self._is_leaf_node(root):
             return 1
-        element_q = deque() 
-        element_q.append(root)
-        number_level = 0
 
-        while len(element_q) >0 :
-            node_count_at_level = len(element_q)
-            if (node_count_at_level == 0) :
-                return number_level
-            
-            while (node_count_at_level>0):
-                element = element_q.popleft()
+        return self._calculate_tree_depth(root)
 
-                if element is not None:
-                    if(element.left is not None):
-                        element_q.append(element.left)
-                    if(element.right is not None):
-                        element_q.append(element.right)
-                    
-                    node_count_at_level -= 1
-            
-            number_level+= 1
+    def _is_leaf_node(self, node) -> bool:
+        # Helper to check if a node is a leaf (no children)
+        return node.left is None and node.right is None
 
-        return number_level
+    def _calculate_tree_depth(self, root) -> int:
+        """
+        Uses level-order traversal (BFS) to calculate the depth of the tree.
+        """
+        node_queue = deque()
+        node_queue.append(root)
+        depth_counter = 0
+
+        while node_queue:
+            current_level_node_count = len(node_queue)
+
+            for _ in range(current_level_node_count):
+                current_node = node_queue.popleft()
+
+                self._enqueue_child_if_present(current_node.left, node_queue)
+                self._enqueue_child_if_present(current_node.right, node_queue)
+
+            depth_counter += 1
+
+        return depth_counter
+
+    def _enqueue_child_if_present(self, child, queue: deque):
+        # Adds a child node to the queue if it's not None
+        if child is not None:
+            queue.append(child)
+
     
     def recursiveSolution(self,root):
         if not  root:
