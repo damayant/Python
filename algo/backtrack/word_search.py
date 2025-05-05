@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         rows,cols=len(board),len(board[0])
@@ -19,5 +21,16 @@ class Solution:
                 if dfs(r,c,0):
                     return True 
         return False
+
+# Example usage
+if __name__ == "__main__":
+    board = [
+        ['A', 'B', 'C', 'E'],
+        ['S', 'F', 'C', 'S'],
+        ['A', 'D', 'E', 'E']
+    ]
+    word = "ABCCED"
+    solution = Solution()
+    print(solution.exist(board, word))  # Output: True
 
         

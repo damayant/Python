@@ -30,3 +30,13 @@ class Trie:
                 return False
             node = node.children[char]
         return True
+    
+# Example usage:
+if __name__ == "__main__":
+    trie = Trie()
+    trie.insert("apple")
+    print(trie.search("apple"))   # True
+    print(trie.search("app"))     # False
+    print(trie.startsWith("app"))  # True
+    trie.insert("app")
+    print(trie.search("app"))     # True
