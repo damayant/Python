@@ -38,10 +38,11 @@ class Solution:
 
 # Example usage
 solution = Solution()
-print(solution.findOrder(5, [[0,1],[0,2],[1,3],[1,4],[3,4]]))  
+print(solution.findOrder(1, [[0,1]]))
+# print(solution.findOrder(5, [[0,1],[0,2],[1,3],[1,4],[3,4]]))  
 
 
-
+'''
 # class Solution :
     def findOrder(numCourses:int,prerequisites:List[List[int]])->List[int]:
         #map each course to a pre-requisite list
@@ -84,4 +85,4 @@ print(solution.findOrder(5, [[0,1],[0,2],[1,3],[1,4],[3,4]]))
         
 
     findOrder(numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]])
-
+'''
