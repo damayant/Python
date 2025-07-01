@@ -53,8 +53,10 @@ fs = FileSystem()
 fs.mkdir("/a/b/c")
 fs.addContentToFile("/a/b/c/d.txt", "Hello")
 print(fs.ls("/a/b/c"))  # Output: ['d.txt']
-# print(fs.readContentFromFile("/a/b/c/d.txt"))  # Output: 'Hello'
-# fs.addContentToFile("/a/b/c/d.txt", " World")
-# print(fs.readContentFromFile("/a/b/c/d.txt"))  # Output: 'Hello World'
-# fs.mkdir("/x/y/z")
-# print(fs.ls("/x/y"))  # Output: ['z']
+print(fs.readContentFromFile("/a/b/c/d.txt"))  # Output: 'Hello'
+fs.addContentToFile("/a/b/c/d.txt", " World")
+print(fs.readContentFromFile("/a/b/c/d.txt"))  # Output: 'Hello World'
+fs.mkdir("/a/b/c/x.txt")
+print(fs.ls("/a/b/c"))  # Output: ['d.txt', 'x.txt']
+fs.mkdir("/x/y/z")
+print(fs.ls("/x/y"))  # Output: ['z']
