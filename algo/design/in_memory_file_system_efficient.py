@@ -11,12 +11,14 @@ class FileSystem:
     def __init__(self):
         self.root = Node()
 
+     # 📂 List files or directories in the given path
     def ls(self, path: str) -> List[str]:
-        node = self._traverse(path)
-        if node.is_file:
+        node = self._traverse(path)# Navigate to the node at the given path
+        if node.is_file: # If it's a file, return just the file name
             return [path.split('/')[-1]]
+        # If it's a directory, return a sorted list of its contents (child names)
         return sorted(node.children.keys())
-
+    
     def mkdir(self, path: str) -> None:
         self._traverse(path, create=True)
 
