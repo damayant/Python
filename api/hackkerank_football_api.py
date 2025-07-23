@@ -3,7 +3,7 @@ import requests
 # Base URL
 url = "https://jsonmock.hackerrank.com/api/football_teams"
 
-def get_football_teams(page):
+def get_football_teams(page,nation=''):
     params={
         'page':page,
         'nation':'nation'
@@ -19,7 +19,7 @@ def get_football_teams(page):
 
 if __name__ == "__main__":
     page = 1
-    teams, total_pages = get_football_teams(page)
+    teams, total_pages = get_football_teams(page,'Brazil')
     print(f"Total pages: {total_pages}")
     for team in teams:
         print(team['name'])

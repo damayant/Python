@@ -35,7 +35,7 @@ class TimeMap:
         
 # Example usage:
 if __name__ == "__main__":
-    time_map = TimeMap()
+    map = TimeMap()
     time_map.set("foo", "bar", 1)
     # print(time_map.get("foo", 1))  # Output: "bar"
     print(time_map.get("foo", 3))  # Output: "bar"
