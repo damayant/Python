@@ -1,52 +1,52 @@
 from typing import List
+from collections import defaultdict
 
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        N = 9
 
-class SudokuSolver:
-    def __init__(self,board:List[List[str]]):
-        self.board=board 
-        self.grid_size=9
+        rows = [set() for _ in range(N)]
+        cols = [set() for _ in range(N)]
+        boxes = defaultdict(set)
 
-    def solve(self)->None:
-        self.solve_sudoku()
-    
-    def solve_sudoku(self)->bool:
-        for row in range(self.grid_size):
-            for col in range(self.grid_size):
-                if self.board[row][col]==".":
-                    for digit in map(str,range(1,10)):
-                        if self.is_valid_placement(row,col,digit):
-                            self.board[row][col]=digit
-                            if self.solve_sudoku():
-                                return True
-                            self.board[row][col]="." #backtrack
-                        return False #no valid digit found
-        return True #puzzle solved
-    
-    def is_valid_placement(self,row:int,col:int,digit:str)->bool:
-        #check row and col
-        for i in range(self.grid_size):
-            if self.board[row][i]==digit or self.board[i][col]==digit:
-                return False 
-            
-        #check subgrid
-        subgrid_row_start=(row//3)
-        subgrid_col_start=(col//3)
-        for i in range(3):
-            for j in range(3):
-                if self.board[subgrid_row_start+i][subgrid_col_start+j]==digit:
-                    return False
-        return True 
-    
+        empty_cells = []
 
-if __name__ == "__main__":
-    sudoku_board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
-    print("Before solving:")
-    for row in sudoku_board:
-        print(" ".join(row))
+        # Step 1: Initialize sets and gather empty cell positions
+        for r in range(N):
+            for c in range(N):
+                val = board[r][c]
+                if val == ".":
+                    empty_cells.append((r, c))
+                else:
+                    rows[r].add(val)
+                    cols[c].add(val)
+                    boxes[(r // 3, c // 3)].add(val)
 
-    solver = SudokuSolver(sudoku_board)
-    solver.solve()
+        # Step 2: Backtracking function
+        def backtrack(idx: int) -> bool:
+            if idx == len(empty_cells):
+                return True  # Solved
 
-    print("\nAfter solving:")
-    for row in sudoku_board:
-        print(' '.join(row))
+            r, c = empty_cells[idx]
+            for digit in map(str, range(1, 10)):
+                if digit in rows[r] or digit in cols[c] or digit in boxes[(r // 3, c // 3)]:
+                    continue
+
+                # Try placing digit
+                board[r][c] = digit
+                rows[r].add(digit)
+                cols[c].add(digit)
+                boxes[(r // 3, c // 3)].add(digit)
+
+                if backtrack(idx + 1):
+                    return True
+
+                # Backtrack
+                board[r][c] = "."
+                rows[r].remove(digit)
+                cols[c].remove(digit)
+                boxes[(r // 3, c // 3)].remove(digit)
+
+            return False
+
+        backtrack(0)
