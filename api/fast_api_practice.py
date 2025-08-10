@@ -36,6 +36,15 @@ def test_create_and_fetch_user():
     get_res=client.get("/users")
     assert new_user in get_res.json()
 
+def test_user_schema():
+    res = client.get("/users")
+    for user in res.json():
+        assert "id" in user
+        assert "name" in user
+        assert isinstance(user["id"], int)
+        assert isinstance(user["name"], str)
+
+
 test_get_user()
 test_create_and_fetch_user()
 new_user={"id":4,"name":"JACK"}
