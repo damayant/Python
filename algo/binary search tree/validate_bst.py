@@ -26,7 +26,7 @@ class Solution :
 
     root = TreeNode(5)
     root.left = TreeNode(1)
-    root.right = TreeNode(4)
+    root.right = TreeNode(7)
 
     print(isValidBST(root))
 
