@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from typing import List
 import crud,schema,database
 import logging
 
@@ -22,6 +21,6 @@ def delete_author(author_id:int,db:Session=Depends(database.get_db)):
     logger.info(f"Deleting author:{author_id}")
     crud.delete_author(db,author_id)
 
-@router.delete("/",status_code=204)
-def delete_all_authors(db:Session=Depends(database.get_db)):
-    crud.delete_all_author(db)
+@router.patch("/{author_id}",status_code=200)
+def update_author(author_id:int,author:schema.AuthorBase,db:Session=Depends(database.get_db)):
+    crud.update_author(db,author_id=author_id,author_data=author)

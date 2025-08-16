@@ -62,7 +62,7 @@ def get_author_by_id(db:Session,author_id:int):
     
     
 def delete_author(db:Session,author_id:int):
-    author=get_author_by_id(db,author_id)
+    author=db.query(models.Author).filter(models.Author.id==author_id).first()
     if not author:
         logger.warning(f"this {author_id} does not exist in Authors table")
         raise HTTPException(
@@ -81,13 +81,26 @@ def delete_author(db:Session,author_id:int):
         )
     
 
-# def update_author(db:Session,author_id:int):
-#     author=db.query(models.Author).filter(models.Author.id==id).first()
-#     if not author:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND,
-#             details=f'{author_id} does not exist'
-#         )
-#     try:
+def update_author(db:Session,author_id:int,author_data:schema.AuthorBase):
+    author=db.query(models.Author).filter(models.Author.id==author_id).first()
+    if not author:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f'{author_id} does not exist'
+        )
+    try:
+        update_data=author_data.model_dump(exclude_unset=True)
+        for key,value in update_data.items():
+            if hasattr(author,key):
+                setattr(author,key,value)
+        db.commit()
+        db.refresh(author)
+        return author
+    except Exception as e:
+        logger.error(f"Error while fetching:{e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Internal server error {e}"
+        )
         
     

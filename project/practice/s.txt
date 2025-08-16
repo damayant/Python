@@ -1,0 +1,4 @@
+def delete_author(db:Session,author_id:int):
+    author=get_author(db,author_id)
+    db.delete(author)
+    db.commit()
