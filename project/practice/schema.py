@@ -10,6 +10,7 @@ class AuthorCreate(AuthorBase):
 class BookBase(BaseModel):
     title:str 
     genre:Optional[str]=None 
+    author_id:Optional[int]=None
 
 class BookCreate(BookBase):
     pass 

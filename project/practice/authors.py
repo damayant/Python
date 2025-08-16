@@ -7,9 +7,9 @@ logger=logging.getLogger(__name__)
 router=APIRouter(prefix='/authors')
 
 @router.post("/",status_code=201)
-def create_author(author: schema.AuthorCreate,db:Session=Depends(database.get_db)):
+def create_author(author: schema.AuthorBase,db:Session=Depends(database.get_db)):
     logger.info(f"Recieved request to create author: {author.name}")
-    return crud.create_author(db, author.name)
+    return crud.create_author(db, author)
 
 @router.get("/",status_code=200)
 def get_authors(db:Session=Depends(database.get_db)):
