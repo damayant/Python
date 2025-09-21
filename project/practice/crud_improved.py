@@ -38,7 +38,7 @@ def create_author(db:Session, author:schema.AuthorBase):
         )
     author_data=author.model_dump()
     new_author=models.Author(**author_data)
-    new_author=commit_refresh(new_author)
+    new_author=commit_refresh(db,new_author)
     logger.info(f"New author:{author.name} created")
     return new_author
 
@@ -73,5 +73,17 @@ def delete_author(db:Session,author_id:int):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
+    
+
+def update_author(db: Session, author_id: int, author_data: schema.AuthorBase):
+    try:
+        update_dict = author_data.model_dump(exclude_unset=True)
+        rows_updated = db.query(models.Author).filter(models.Author.id == author_id).update(update_dict)
+        if rows_updated == 0:
+            raise HTTPException(status_code=404, detail="Author not found")
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        raise
 
 
