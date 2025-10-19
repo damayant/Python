@@ -10,3 +10,4 @@ def fn(arr):
             right -= 1
     
     return ans
+ 

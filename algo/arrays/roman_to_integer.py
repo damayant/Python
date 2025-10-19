@@ -27,5 +27,5 @@ class Solution:
                 total += values[s[i]]
                 i += 1
         return total
-    
+
     print(romanToInt(s='MCMXCIV'))
