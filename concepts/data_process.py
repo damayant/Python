@@ -119,3 +119,5 @@ Summary:
 The improved code combines the flexibility and features of requests, robust error handling, chunked streaming for large data, and logging for failsafe operation. It is suitable for production scenarios where reliability and scalability matter.
 
 '''
+
+# api best practices:https://chatgpt.com/share/68f526d9-5b94-800e-8242-78b13141cd5b
