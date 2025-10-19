@@ -1,6 +1,8 @@
 import urllib.request
 import re
 
+
+ #------------------------approach 1 ---------------------------------------#
 url= "https://raw.githubusercontent.com/damayant/Python/master/api/sample.txt"
 file_content=''
 try:
@@ -34,9 +36,7 @@ Synchronous only (blocks the main thread).
 Less flexible for handling headers, timeouts, and other HTTP features.
 '''
 
-
-
-
+ #------------------------approach 2 ---------------------------------------#
 import requests
 base_url_one='https://raw.githubusercontent.com/damayant/Python/master/api/sample.txt'
 base_url='https://jsonplaceholder.typicode.com/posts'
@@ -67,7 +67,7 @@ Still synchronous (blocks main thread).
 Error handling could be more robust (e.g., custom exceptions, retries).
 '''
 
-
+ #------------------------approach 3 ---------------------------------------#
 
 import requests
 import logging
