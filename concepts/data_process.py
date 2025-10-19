@@ -121,3 +121,35 @@ The improved code combines the flexibility and features of requests, robust erro
 '''
 
 # api best practices:https://chatgpt.com/share/68f526d9-5b94-800e-8242-78b13141cd5b
+
+
+####--- final-------######
+def get_data(base_url,timeout_limit,chunk_limit,stream=False):
+    #create a session
+    session= requests.Session()
+
+    #create a try block
+    try:
+        #use context manager for ensuring connection is closed properly
+        with session.get(url=base_url,timeout=timeout_limit,stream=stream) as response:
+            #check if any error
+            response.raise_for_status()
+            #check content type
+            content_type=response.headers.get('Content-Type','')
+            if 'application/json' in content_type:
+                return response.json()
+            elif stream:
+                #stream means usually large data so use iterator
+                for chunk in response.iter_content(chunk_size=chunk_limit):
+                    if chunk:
+                        text_chunk=chunk.decode('utf-8',errors='ignore')
+                        logging.info(f'chunk recieved:{len(text_chunk)} bytes')
+                        yield text_chunk
+            else:
+                return response.text
+    except requests.RequestException as e:
+        logging.error(f'request failed for {base_url}:{e}')
+        return None
+    finally:
+        session.close()
+                        
