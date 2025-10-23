@@ -45,8 +45,10 @@ class Solution:
                 pattern = word[:j] + "*" + word[j+1:]
                 # Move only one level closer
                 for neighbour in neighbours[pattern]:
-                    if distance.get(neighbour, float('inf')) == distance[word] - 1:
-                        stack.append((neighbour, path + [neighbour]))
+                    if neighbour in distance: #only consider words reachable from beginWord 
+                        if distance[neighbour] == distance[word] - 1 :
+                            stack.append((neighbour,path+[neighbour]))
+
 
         # Deduplicate final results if overlapping paths exist
         unique_res = []
