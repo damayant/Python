@@ -7,7 +7,7 @@ class Solution:
         def backtrack(remaining_sum: int, current_combination: List[int], current_index: int):
             # Base case: valid combination found
             if remaining_sum == 0:
-                all_combinations.append(list(current_combination))
+                all_combinations.append(current_combination[:])
                 return
             # Base case: invalid path
             if remaining_sum < 0:
@@ -26,6 +26,25 @@ class Solution:
                 current_combination.pop()
 
         backtrack(target, [], 0)
+        return all_combinations
+    
+    def combinationSumFaster(self,candidates:List[int])->List[List[int]]:
+        all_combinations = []
+        candidates.sort() #sort to enable early breaking
+
+        def backtrack(remaining_sum:int,current_combination:List[int],current_index:int):
+            if remaining_sum == 0 :
+                all_combinations.append(current_combination[:])
+                return 
+            for index in range(current_index,len(candidates)):
+                current_candidate=candidates[index]
+                if remaining_sum-current_candidate<0:
+                    break 
+                current_combination.append(current_candidate)
+                backtrack(remaining_sum-current_candidate,current_combination,index)
+                current_combination.pop()
+
+        backtrack(target,[],0)
         return all_combinations
 
 

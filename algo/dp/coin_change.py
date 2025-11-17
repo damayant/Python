@@ -1,36 +1,50 @@
+from typing import List
+
 class Solution:
-    def coinChange(self, coins, amount):
-        # Initialize memoization table with None
-        self.memo = [None] * (amount + 1)
-        return self._coin_change_helper(coins, amount)
-    
-    def _coin_change_helper(self, coins, remaining):
-        # Base Case 1: If remaining amount is negative, no solution possible
-        if remaining < 0:
-            return -1
+    def coinChange(self, coins: List[int], amount: int) -> int:
         
-        # Base Case 2: If remaining amount is 0, no more coins are needed
-        if remaining == 0:
-            return 0
-
-        # Check if result is already computed (memoization)
-        if self.memo[remaining] is not None:
-            return self.memo[remaining]
-
-        # Initialize min_coins to infinity to track minimum number of coins needed
-        min_coins = float('inf')
-
-        # Try every coin and reduce remaining amount recursively
-        for coin in coins:
-            result = self._coin_change_helper(coins, remaining - coin)
-            if result == -1:
-                continue  # Skip if no solution for this path
-            min_coins = min(min_coins, result + 1)
-
-        # If min_coins was not updated, it means no solution found
-        self.memo[remaining] = -1 if min_coins == float('inf') else min_coins
-        return self.memo[remaining]
-
+        # We need an array to store the min coins for each amount from 0 to 'amount'.
+        # The size is 'amount + 1' to include the 0 index.
+        min_coins_for_amount = [float('inf')] * (amount + 1)
+        
+        # --- The Base Case ---
+        # It takes 0 coins to make an amount of 0.
+        min_coins_for_amount[0] = 0
+        
+        # --- Build the Solution from the Bottom Up ---
+        # We loop through every single amount from 1 up to the target amount.
+        for current_amount in range(1, amount + 1):
+            
+            # For this 'current_amount', try using each coin we have.
+            for coin in coins:
+                
+                # We can only use a coin if it's not larger than the amount we're trying to make.
+                if current_amount - coin >= 0:
+                    
+                    # This is the core logic:
+                    # Is the current best way to make 'current_amount' (which is 'min_coins_for_amount[current_amount]')
+                    # WORSE than the '1 + min_coins_for_amount[current_amount - coin]'?
+                    #
+                    # '1 + min_coins_for_amount[current_amount - coin]' means:
+                    # "The cost to make the amount *before* I added this coin, plus one (for this coin)."
+                    
+                    min_coins_for_amount[current_amount] = min(
+                        min_coins_for_amount[current_amount], 
+                        1 + min_coins_for_amount[current_amount - coin]
+                    )
+        
+        # --- The Final Answer ---
+        # After the loops, min_coins_for_amount[amount] holds the answer for the target amount.
+        final_answer = min_coins_for_amount[amount]
+        
+        # If the value is still 'infinity', it means we were never able to
+        # find a combination of coins to make that amount.
+        if final_answer == float('inf'):
+            return -1
+        else:
+            return int(final_answer) # Return as an integer
+        
+        
 # Example usage:
 solution = Solution()
 print(solution.coinChange([1, 2, 5], 11))  # Output: 3 (11 = 5 + 5 + 1)
