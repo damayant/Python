@@ -1,0 +1,2 @@
+"""Good coding practices examples."""
+
