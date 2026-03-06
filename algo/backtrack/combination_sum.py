@@ -41,7 +41,7 @@ class Solution:
                 if remaining_sum-current_candidate<0:
                     break 
                 current_combination.append(current_candidate)
-                backtrack(remaining_sum-current_candidate,current_combination,index)
+                backtrack(remaining_sum-current_candidate,current_combination,index) #remember to always subsctract from remaining and not target
                 current_combination.pop()
 
         backtrack(target,[],0)
